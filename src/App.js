@@ -22,7 +22,7 @@ function App() {
 
   const clearCartItems = () => {
     setCartItems(0);
-    setCartProducts("");
+    setCartProducts([]);
   };
   return (
     <div>

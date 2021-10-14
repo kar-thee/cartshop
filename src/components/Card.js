@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/custom.css";
 
 const Card = ({
@@ -16,7 +16,14 @@ const Card = ({
   function updateState() {
     setState((s) => !s);
   }
-  let statebtn = products.length;
+
+  useEffect(() => {
+    if (products.includes(id)) {
+      setState(false);
+    } else {
+      setState(true);
+    }
+  }, [id, products, state]);
 
   return (
     <>
