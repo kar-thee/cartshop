@@ -4,7 +4,7 @@ A e-commerce like application developed with Bootstrap and React..
 <br><br>
 Netlify Url : https://zen-assignment-react-cartshop.netlify.app/
 <br><br>
-The main task was to implement 
+The main tasks are :
 <ul>
 <li>Give value  according to given Rating</li>
 <li>Disable add to cart button when added to card</li>
