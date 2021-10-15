@@ -31,13 +31,18 @@ const Cart = ({ cartItems, products, clearCartItems }) => {
           </span>
         </button>
 
-        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+        <ul
+          className="dropdown-menu cart-menu"
+          aria-labelledby="navbarDropdown"
+        >
           {products
             ? products.map((prod, index) => (
                 <li key={index}>
                   <a className="dropdown-item" href={"#" + prod}>
                     {/* the above href for focus to go to respective card */}
-                    {data[prod].name}
+                    <span className="d-flex justify-content-between">
+                      {data[prod].name} - {data[prod].price}
+                    </span>
                   </a>
                 </li>
               ))

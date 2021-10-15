@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../css/custom.css";
+import Rating from "./Rating";
 
 const Card = ({
   name,
@@ -12,6 +13,9 @@ const Card = ({
   id,
   products,
 }) => {
+  //   const starArray = [1, 2, 3, 4, 5];
+  const [array] = useState([0, 1, 2, 3, 4]);
+  const [rating, setRating] = useState([false, false, false, false, false]);
   const [state, setState] = useState(true);
   function updateState() {
     setState((s) => !s);
@@ -47,13 +51,24 @@ const Card = ({
               {/* <!-- Product name--> */}
               <h5 className="fw-bolder">{name}</h5>
               {/* <!-- Product reviews--> */}
-              <div className="d-flex justify-content-center small text-warning mb-2">
-                <i className="bi bi-star-fill rating"></i>
-                <i className="bi bi-star-fill rating"></i>
-                <i className="bi bi-star-fill rating"></i>
-                <i className="bi bi-star-fill rating"></i>
-                <i className="bi bi-star-fill rating"></i>
+              <div className="d-flex justify-content-center small  mb-2">
+                {array.map((star) => (
+                  <Rating
+                    key={star}
+                    value={star}
+                    rated={rating}
+                    reviewArray={array}
+                    setRating={setRating}
+                  />
+                ))}
               </div>
+              {/* <div className="d-flex justify-content-center small text-warning mb-2">
+                <i className="bi bi-star-fill rating"></i>
+                <i className="bi bi-star-fill rating"></i>
+                <i className="bi bi-star-fill rating"></i>
+                <i className="bi bi-star-fill rating"></i>
+                <i className="bi bi-star-fill rating"></i>
+              </div> */}
               {/* <!-- Product price--> */}
               {originalPrice ? (
                 <span className="text-muted text-decoration-line-through">
