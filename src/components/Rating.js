@@ -1,32 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Rating = ({ value, rated, reviewArray, setRating }) => {
+const Rating = ({ rated, reviewArray, setRating, saveRating, value }) => {
+  const [isHoverOff, setHoverOff] = useState(false);
+
+  useEffect(() => {
+    if (isHoverOff) {
+      setRating([false, false, false, false, false]);
+    }
+  }, [isHoverOff, setRating]);
+
   function updatehover() {
-    setRating([false, false, false, false, false]);
+    setHoverOff(true);
     console.log("HoverstateUpdated", rated);
   }
   function star(id) {
     console.log(id);
-
+    let arr = new Array(5);
     reviewArray.forEach((element) => {
-      if (element < id) {
-        rated[element] = true;
-      } else if (element === 0) {
-        rated[element] = false;
+      if (element <= id) {
+        arr[element] = true;
       } else {
-        rated[element] = false;
+        arr[element] = false;
       }
     });
-    setRating(rated);
+    setRating(arr);
     console.log(rated, "ratedd");
     // document.getElementById("star-rate").classList.add("text-warning");
   }
+
   return (
-    <span id="star-rate" className="">
+    <span
+      id="star-rate"
+      className={rated[value] === true ? "text-warning" : ""}
+    >
       <i
         className="bi bi-star-fill rating"
         onMouseOver={() => star(value)}
-        onMouseOut={() => updatehover()}
+        onMouseOut={updatehover}
+        onClick={() => saveRating(value + 1)}
       ></i>
     </span>
   );

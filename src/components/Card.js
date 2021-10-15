@@ -16,7 +16,14 @@ const Card = ({
   //   const starArray = [1, 2, 3, 4, 5];
   const [array] = useState([0, 1, 2, 3, 4]);
   const [rating, setRating] = useState([false, false, false, false, false]);
+  const [starsubmit, setStarSubmit] = useState(0);
+
   const [state, setState] = useState(true);
+
+  function saveRating(val) {
+    setStarSubmit(val);
+  }
+
   function updateState() {
     setState((s) => !s);
   }
@@ -52,15 +59,25 @@ const Card = ({
               <h5 className="fw-bolder">{name}</h5>
               {/* <!-- Product reviews--> */}
               <div className="d-flex justify-content-center small  mb-2">
-                {array.map((star) => (
-                  <Rating
-                    key={star}
-                    value={star}
-                    rated={rating}
-                    reviewArray={array}
-                    setRating={setRating}
-                  />
-                ))}
+                <span>
+                  {array.map((star, index) => (
+                    <Rating
+                      key={index}
+                      value={star}
+                      rated={rating}
+                      reviewArray={array}
+                      setRating={setRating}
+                      saveRating={saveRating}
+                    />
+                  ))}
+                </span>
+                {"       "}
+                <div
+                  className="badge bg-transparent text-dark position-absolute"
+                  style={{ top: "0.5rem", left: "0.5rem" }}
+                >
+                  {starsubmit > 0 ? starsubmit : ""}⭐
+                </div>
               </div>
               {/* <div className="d-flex justify-content-center small text-warning mb-2">
                 <i className="bi bi-star-fill rating"></i>

@@ -1,19 +1,8 @@
-/* .rating {
-  color: #6c757d;
+.rating-display {
+  position: absolute;
+  bottom: auto;
+  right: 2%;
 }
-.rating:hover {
-  color: #ffd700;
-} */
-/* .bi-star-fill {
-  border: 1px solid black;
-  background-color: white;
-  padding: 1%;
-}
-.rating:hover {
-  color: gold;
-  background-color: gray;
-} */
-
 .cart-menu {
   top: 100% !important;
   left: 70% !important;
